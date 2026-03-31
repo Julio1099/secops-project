@@ -1,0 +1,26 @@
+[project]
+name = "secops-project"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Julio1099",email = "juliio1520@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "bandit (>=1.9.4,<2.0.0)",
+    "safety (>=3.7.0,<4.0.0)",
+    "ruff (>=0.15.8,<0.16.0)",
+    "django (>=6.0.3,<7.0.0)",
+    "python-dotenv (>=1.2.2,<2.0.0)"
+]
+
+[tool.poetry]
+packages = [{include = "secops_project", from = "src"}]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.bandit]
+exclude_dirs = [".venv"]
