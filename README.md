@@ -28,8 +28,8 @@ Test results:
         No issues identified.
 
 Code scanned:
-        Total lines of code: 128
-        Total lines skipped (#nosec): 1
+        Total lines of code: 124
+        Total lines skipped (#nosec): 0
 
 Run metrics:
         Total issues (by severity):
@@ -87,5 +87,5 @@ Eu, Júlio Cesar, declaro que auditei manualmente as ferramentas e dependências
 ### Observações técnicas e futuras:
 
 * **Isolamento de Perímetro:** Foi criado um arquivo de configuração `.bandit` para excluir o diretório `./.venv` da análise estática, focando a auditoria no código proprietário e reduzindo ruídos de bibliotecas de terceiros (já validadas pelo *Safety*).
-* **Gestão de Segredos:** A vulnerabilidade **B105 (Hardcoded Password)** detectada na `SECRET_KEY` do Django foi tratada via `# nosec` após revisão manual. Para o futuro, planeja-se a migração para variáveis de ambiente via arquivo `.env`.
+* **Gestão de Segredos:** Implementada a segregação de dados sensíveis utilizando variáveis de ambiente (`python-dotenv`). A `SECRET_KEY` foi removida do código-fonte e isolada em arquivo `.env` (não versionado), eliminando a vulnerabilidade **B105** em conformidade com o *Twelve-Factor App*.
 * **Ambiente Virtual:** A configuração `virtualenvs.in-project true` garantiu que todo o ecossistema de desenvolvimento estivesse contido na pasta do projeto, facilitando a auditoria e a portabilidade para a PCDF.
